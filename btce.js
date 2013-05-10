@@ -2,7 +2,7 @@
  * Node.js BTC-E Trading API
  * https://btc-e.com/api/documentation
  *
- * Version: 0.1
+ * Version: 0.2
  * Author : petermrg <petermrg@ymail.com>
  * gitHub : https://github.com/petermrg/node-btce
  *
@@ -26,16 +26,27 @@ var BTCE = function(key, secret) {
 }
 
 BTCE.prototype.getInfo = function(callback) {
-  this.query('getInfo', callback)
+  this.query('getInfo', null, callback)
 }
 
-BTCE.prototype.query = function(method, callback) {
-  this.nonce++
+BTCE.prototype.transHistory = function(params, callback) {
+  this.query('TransHistory', params, callback)
+}
 
-  var content = querystring.stringify({
+BTCE.prototype.query = function(method, params, callback) {
+
+  var content = {
     'method': method,
-    'nonce': '' + this.nonce,
-  })
+    'nonce': this.nonce++,
+  }
+
+  if (!!params && typeof(params) == 'object') {
+    Object.keys(params).forEach(function (key) {
+      content[key] = params[key]
+    })
+  }
+
+  content = querystring.stringify(content)
 
   var sign = crypto
     .createHmac('sha512', new Buffer(this.secret, 'utf8'))
@@ -48,7 +59,7 @@ BTCE.prototype.query = function(method, callback) {
     'Key': this.key,
     'Sign': sign,
     'content-type': 'application/x-www-form-urlencoded',
-    'content-length': ''+content.length,
+    'content-length': content.length,
   }
 
   var req = https.request(options, function(res) {

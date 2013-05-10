@@ -51,3 +51,9 @@ https://btc-e.com/api/documentation
 ## Feature requests
 
   * petermrg at ymail dot com
+
+## Donate
+
+  * BTC: 1GVRSmJzZpFoLvFnPNtdwPeVXh6t4t65PZ
+  * LTC: LWSRwTDKVxE9BGziUzbUw7MkHz6KACVnAA
+

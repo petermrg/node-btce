@@ -54,14 +54,14 @@ Current version 0.3
 
 ## Methods
 
-  getInfo = function(callback)
-  transHistory = function(params, callback)
-  tradeHistory = function(params, callback)
-  orderList = function(params, callback)
-  trade = function(params, callback)
-  cancelOrder = function(orderId, callback)
-  query = function(method, params, callback)
-  getTimestamp = function(time)
+    getInfo = function(callback)
+    transHistory = function(params, callback)
+    tradeHistory = function(params, callback)
+    orderList = function(params, callback)
+    trade = function(params, callback)
+    cancelOrder = function(orderId, callback)
+    query = function(method, params, callback)
+    getTimestamp = function(time)
 
 Information about parameters in source comments
 

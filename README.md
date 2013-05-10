@@ -54,6 +54,7 @@ Current version 0.3
 
 ## Methods
 
+    ```javascript
     getInfo = function(callback)
     transHistory = function(params, callback)
     tradeHistory = function(params, callback)
@@ -62,6 +63,7 @@ Current version 0.3
     cancelOrder = function(orderId, callback)
     query = function(method, params, callback)
     getTimestamp = function(time)
+    ```
 
 Information about parameters in source comments
 

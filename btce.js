@@ -1,12 +1,12 @@
 /**
- * Node.js BTC-E API example
+ * Node.js BTC-E Trading API
  * https://btc-e.com/api/documentation
  *
  * Version: 0.1
  * Author : petermrg <petermrg@ymail.com>
+ * gitHub : https://github.com/petermrg/node-btce
  *
  * Donate:
- *
  * BTC: 1GVRSmJzZpFoLvFnPNtdwPeVXh6t4t65PZ
  * LTC: LWSRwTDKVxE9BGziUzbUw7MkHz6KACVnAA
  *

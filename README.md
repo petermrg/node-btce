@@ -1,10 +1,8 @@
 # BTC-E API for Node.js
 
-Simple API interface for the Crypto Coin Trading platform BTC-E
+Simple API to BTC-E Crypto Coin Trading platform
 
 ## Usage
-
-Sample:
 
     var BTCE = require('./btce.js')
 
@@ -19,6 +17,6 @@ Sample:
       }
     })
 
-## Feature requests:
+## Feature requests
 
   * petermrg at ymail dot com

@@ -17,24 +17,160 @@ var https = require('https')
 var url = require('url')
 var crypto = require('crypto')
 var querystring = require('querystring')
+var util = require('util')
 
 var BTCE = function(key, secret) {
   this.key = key
   this.secret = secret
   this.apiURL = 'https://btc-e.com:443/tapi'
-  this.nonce = Math.floor(Date.now() / 1000)
+  this.nonce = this.getTimestamp(Date.now())
 }
 
+/**
+ * getTimestamp: converts a Date object, a string, or a JS timestamp to a UNIX timestamp.
+ *
+ * @param {Mixed} time
+ */
+BTCE.prototype.getTimestamp = function(time) {
+  if (util.isDate(time)) {
+    return Math.round(time.getTime() / 1000)
+  }
+  if (typeof time == 'string') {
+    return this.getTimestamp(new Date(time))
+  }
+  if (typeof time == 'number') {
+    return (time >= 0x10000) ? Math.round(time / 1000) : time
+  }
+  return 0
+}
+
+/**
+ * getInfo: returns the information about the user's current balance, API key privileges,
+ * the number of transactions, the number of open orders and the server time
+ *
+ * @param {Function} callback(err, data)
+ */
 BTCE.prototype.getInfo = function(callback) {
   this.query('getInfo', null, callback)
 }
 
+/**
+ * transHistory: returns the transactions history.
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * parameter | oblig | description                                      | type      | default
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * from      | No    | the number of the order to start displaying with | numerical | 0
+ * count     | No    | The number of orders for displaying              | numerical | 1000
+ * from_id   | No    | id of the order to start displaying with         | numerical | 0
+ * end_id    | No    | id of the order to finish displaying             | numerical | ∞
+ * order     | No    | sorting                                          | order[1]  | DESC
+ * since     | No    | when to start displaying                         | time[2]   | 0
+ * end       | No    | when to finish displaying                        | time[2]   | ∞
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * [1] ASC or DESC
+ * [2] Accepts UNIX timestamps, Date objects and strings like '2013-01-02 20:23'
+ *
+ * @param {Object} params
+ * @param {Function} callback(err, data)
+ */
 BTCE.prototype.transHistory = function(params, callback) {
   this.query('TransHistory', params, callback)
 }
 
-BTCE.prototype.query = function(method, params, callback) {
+/**
+ * tradeHistory: returns the trade history.
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * parameter | oblig | description                                      | type      | default
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * from      | No    | the number of the order to start displaying with | numerical | 0
+ * count     | No    | The number of orders for displaying              | numerical | 1000
+ * from_id   | No    | id of the order to start displaying with         | numerical | 0
+ * end_id    | No    | id of the order to finish displaying             | numerical | ∞
+ * order     | No    | sorting                                          | order[1]  | DESC
+ * since     | No    | when to start displaying                         | time[2]   | 0
+ * end       | No    | when to finish displaying                        | time[2]   | ∞
+ * pair      | No    | the pair to display the orders                   | pair[3]   | all pairs
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * [1] ASC or DESC
+ * [2] Accepts UNIX timestamps, Date objects and strings like '2013-01-02 20:23'
+ *
+ * @param {Object} params
+ * @param {Function} callback(err, data)
+ */
+BTCE.prototype.tradeHistory = function(params, callback) {
+  this.query('TransHistory', params, callback)
+}
 
+/**
+ * orderList: returns your open orders/the orders history.
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * parameter | oblig | description                                      | type      | default
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * from      | No    | the number of the order to start displaying with | numerical | 0
+ * count     | No    | The number of orders for displaying              | numerical | 1000
+ * from_id   | No    | id of the order to start displaying with         | numerical | 0
+ * end_id    | No    | id of the order to finish displaying             | numerical | ∞
+ * order     | No    | sorting                                          | order[1]  | DESC
+ * since     | No    | when to start displaying                         | time[2]   | 0
+ * end       | No    | when to finish displaying                        | time[2]   | ∞
+ * pair      | No    | the pair to display the orders                   | pair[3]   | all pairs
+ * active    | No    | is it displaying of active orders only?          | 1 or 0    | 1
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * [1] ASC or DESC
+ * [2] Accepts UNIX timestamps, Date objects and strings like '2013-01-02 20:23'
+ * [3] Example: btc_usd
+ *
+ * @param {Object} params
+ * @param {Function} callback(err, data)
+ */
+BTCE.prototype.orderList = function(params, callback) {
+  this.query('OrderList', params, callback)
+}
+
+/**
+ * trade: Cancellation of the order
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * parameter | oblig | description                                      | type      | default
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * pair      | Yes   | pair                                             | pair[1]   | -
+ * type      | Yes   | the transaction type                             | trans[2]  | -
+ * rate      | Yes   | the rate to by/sell                              | numerical | -
+ * amount    | Yes   | the amount which is necessary to buy/sell        | numerical | -
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * [1] Example: btc_usd
+ * [2] buy or sell
+ *
+ * @param {Object} params
+ * @param {Function} callback(err, data)
+ */
+BTCE.prototype.trade = function(params, callback) {
+  this.query('Trade', params, callback)
+}
+
+/**
+ * cancelOrder: Cancellation of the order
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * parameter | oblig | description                                      | type      | default
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * order_id  | Yes   | Order id                                         | numerical | -
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ *
+ * @param {Object} params
+ * @param {Function} callback(err, data)
+ */
+BTCE.prototype.cancelOrder = function(orderId, callback) {
+  this.query('CancelOrder', { 'order_id': orderId }, callback)
+}
+
+/**
+ * query: Executes raw query to the API
+ *
+ * @param {String} method
+ * @param {Object} params
+ * @param {Function} callback(err, data)
+ */
+BTCE.prototype.query = function(method, params, callback) {
+  var _this = this
   var content = {
     'method': method,
     'nonce': this.nonce++,
@@ -42,7 +178,13 @@ BTCE.prototype.query = function(method, params, callback) {
 
   if (!!params && typeof(params) == 'object') {
     Object.keys(params).forEach(function (key) {
-      content[key] = params[key]
+      if (key == 'since' || key == 'end') {
+        value = _this.getTimestamp(params[key])
+      }
+      else {
+        value = params[key]
+      }
+      content[key] = value
     })
   }
 
@@ -69,7 +211,7 @@ BTCE.prototype.query = function(method, params, callback) {
       data+= chunk
     })
     res.on('end', function() {
-      callback(false, data)
+      callback(false, JSON.parse(data))
     })
   })
 
@@ -82,5 +224,3 @@ BTCE.prototype.query = function(method, params, callback) {
 }
 
 exports.api = BTCE
-
-

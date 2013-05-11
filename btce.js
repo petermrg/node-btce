@@ -2,7 +2,7 @@
  * Node.js BTC-E Trading API
  * https://btc-e.com/api/documentation
  *
- * Version: 0.3
+ * Version: 0.4
  * Author : petermrg <petermrg@ymail.com>
  * gitHub : https://github.com/petermrg/node-btce
  *
@@ -22,7 +22,8 @@ var util = require('util')
 var BTCE = function(key, secret) {
   this.key = key
   this.secret = secret
-  this.apiURL = 'https://btc-e.com:443/tapi'
+  this.urlPost = 'https://btc-e.com:443/tapi'
+  this.urlGet = 'https://btc-e.com:443/api/2/'
   this.nonce = this.getTimestamp(Date.now())
 }
 
@@ -39,7 +40,7 @@ BTCE.prototype.getTimestamp = function(time) {
     return this.getTimestamp(new Date(time))
   }
   if (typeof time == 'number') {
-    return (time >= 0x10000) ? Math.round(time / 1000) : time
+    return (time >= 0x100000000) ? Math.round(time / 1000) : time
   }
   return 0
 }
@@ -173,7 +174,7 @@ BTCE.prototype.query = function(method, params, callback) {
   var _this = this
   var content = {
     'method': method,
-    'nonce': this.nonce++,
+    'nonce': ++this.nonce,
   }
 
   if (!!params && typeof(params) == 'object') {
@@ -195,7 +196,7 @@ BTCE.prototype.query = function(method, params, callback) {
     .update(new Buffer(content, 'utf8'))
     .digest('hex')
 
-  var options = url.parse(this.apiURL)
+  var options = url.parse(this.urlPost)
   options.method = 'POST'
   options.headers = {
     'Key': this.key,
@@ -221,6 +222,127 @@ BTCE.prototype.query = function(method, params, callback) {
 
   req.write(content)
   req.end()
+}
+
+/**
+ * getHTTPS: Simple HTTPS GET request
+ *
+ * @param {String} getUrl
+ * @param {Function} callback(err, data)
+ */
+BTCE.prototype.getHTTPS = function(getUrl, callback) {
+
+  var options = url.parse(getUrl)
+  options.method = 'GET'
+  console.log(options)
+  var req = https.request(options, function(res) {
+    var data = ''
+    res.setEncoding('utf8')
+    res.on('data', function (chunk) {
+      data+= chunk
+    })
+    res.on('end', function() {
+      callback(false, JSON.parse(data))
+    })
+  })
+
+  req.on('error', function(err) {
+    callback(err, null)
+  })
+
+  req.end()
+}
+
+/**
+ * trades: Gets a list of the last trades in BTC-E
+ *
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * parameter | oblig | description                                      | type      | default
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * count     | No    | The number of orders for displaying              | numerical | 100
+ * pair      | No    | the pair to display                              | pair[1]   | btc_usd
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * [1] Example: btc_usd
+ *
+ * @param {Object} params
+ * @param {Function} callback(err, data)
+ */
+BTCE.prototype.trades = function(params, callback) {
+  if (!params) params = {}
+  if (!params.count) params.count = 100
+  if (!params.pair) params.pair = 'btc_usd'
+
+  var url = this.urlGet+params.pair+'/trades/'+count
+
+  this.getHTTPS(url, callback)
+}
+
+/**
+ * depth: get asks and bids
+ *
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * parameter | oblig | description                                      | type      | default
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * count     | No    | The number of items for displaying               | numerical | 100
+ * pair      | No    | the pair to display                              | pair[1]   | btc_usd
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * [1] Example: btc_usd
+ *
+ * @param {Object} params
+ * @param {Function} callback(err, data)
+ */
+BTCE.prototype.depth = function(params, callback) {
+  if (!params) params = {}
+  if (!params.count) params.count = 100
+  if (!params.pair) params.pair = 'btc_usd'
+
+  var url = this.urlGet+params.pair+'/depth/'+count
+
+  this.getHTTPS(url, callback)
+}
+
+/**
+ * ticker: Get price and volume information
+ *
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * parameter | oblig | description                                      | type      | default
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * pair      | No    | the pair to display                              | pair[1]   | btc_usd
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * [1] Example: btc_usd
+ *
+ * @param {Object} params
+ * @param {Function} callback(err, data)
+ */
+BTCE.prototype.ticker = function(params, callback) {
+  if (!params) params = {}
+  if (!params.pair) params.pair = 'btc_usd'
+
+  var url = this.urlGet+params.pair+'/ticker'
+
+  this.getHTTPS(url, callback)
+}
+
+/**
+ * fee: Get the fee for transactions
+ *
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * parameter | oblig | description                                      | type      | default
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * pair      | No    | the pair to display                              | pair[1]   | btc_usd
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * [1] Example: btc_usd
+ *
+ * @param {Object} params
+ * @param {Function} callback(err, data)
+ */
+BTCE.prototype.fee = function(params, callback) {
+  if (!params) params = {}
+  if (!params.pair) params.pair = 'btc_usd'
+
+  var url = this.urlGet+params.pair+'/fee'
+
+  this.getHTTPS(url, callback)
 }
 
 exports.api = BTCE

@@ -74,7 +74,7 @@ btce.query('OrderList', { count: 5 }, function(err, data) {
 ## Methods
 
 ```javascript
-// post (requires api key and secred)
+// post (requires api key and secret)
 getInfo = function(callback)
 transHistory = function(params, callback)
 tradeHistory = function(params, callback)

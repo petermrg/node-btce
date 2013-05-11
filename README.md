@@ -6,7 +6,7 @@ Current version 0.4
 
 ## Features
 
-  * Full API
+  * Full API (Public and Trade)
   * Asynchronous requests
   * Automatically converts Date objects, strings and JS timestamps to UNIX timestamps
 
@@ -74,7 +74,7 @@ btce.query('OrderList', { count: 5 }, function(err, data) {
 ## Methods
 
 ```javascript
-// post (requires api key and secret)
+// Trade API (requires api key and secret)
 getInfo = function(callback)
 transHistory = function(params, callback)
 tradeHistory = function(params, callback)
@@ -83,7 +83,7 @@ trade = function(params, callback)
 cancelOrder = function(orderId, callback)
 query = function(method, params, callback)
 
-// get
+// Public API
 fee = function(params, callback)
 trades = function(params, callback)
 depth = function(params, callback)

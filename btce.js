@@ -271,7 +271,7 @@ BTCE.prototype.trades = function(params, callback) {
   if (!params.count) params.count = 100
   if (!params.pair) params.pair = 'btc_usd'
 
-  var url = this.urlGet+params.pair+'/trades/'+count
+  var url = this.urlGet+params.pair+'/trades/'+params.count
 
   this.getHTTPS(url, callback)
 }
@@ -295,7 +295,7 @@ BTCE.prototype.depth = function(params, callback) {
   if (!params.count) params.count = 100
   if (!params.pair) params.pair = 'btc_usd'
 
-  var url = this.urlGet+params.pair+'/depth/'+count
+  var url = this.urlGet+params.pair+'/depth/'+params.count
 
   this.getHTTPS(url, callback)
 }

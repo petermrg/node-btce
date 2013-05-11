@@ -48,7 +48,7 @@ btce.getInfo(function(err, data) {
 ### Get last 10 transactions in descending order
 
 ```javascript
-btce.transHistory({ count: 10, order: 'DESC'}, function(err, data) {
+btce.transHistory({ count: 10, order: 'DESC' }, function(err, data) {
   if (!err) {
     console.log(data)
   }

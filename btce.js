@@ -234,7 +234,6 @@ BTCE.prototype.getHTTPS = function(getUrl, callback) {
 
   var options = url.parse(getUrl)
   options.method = 'GET'
-  console.log(options)
   var req = https.request(options, function(res) {
     var data = ''
     res.setEncoding('utf8')

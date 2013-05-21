@@ -1,0 +1,30 @@
+{
+  "name": "btce",
+  "version": "0.4.0",
+  "description": "BTC-E Trading API",
+  "main": "btce.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/petermrg/node-btce.git"
+  },
+  "keywords": [
+    "btc-e",
+    "btce",
+    "bitcoin",
+    "btc",
+    "trading",
+    "api",
+    "litecoin",
+    "ltc"
+  ],
+  "author": "Peter Morgan",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "2497dc25839ccf43c69ff0f707b3e0faf3f38885",
+  "bugs": {
+    "url": "https://github.com/petermrg/node-btce/issues"
+  }
+}

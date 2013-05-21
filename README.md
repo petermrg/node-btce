@@ -23,12 +23,8 @@ var btce = new BTCE.api('YOUR-KEY', 'YOUR-SECRET')
 
 ```javascript
 btce.ticker({ pair: 'btc_usd' }, function(err, data) {
-  if (!err) {
-    console.log(data)
-  }
-  else {
-    console.log(err)
-  }
+  if (!err) console.log(data)
+  else console.log(err)
 })
 ```
 
@@ -36,12 +32,8 @@ btce.ticker({ pair: 'btc_usd' }, function(err, data) {
 
 ```javascript
 btce.getInfo(function(err, data) {
-  if (!err) {
-    console.log(data)
-  }
-  else {
-    console.log(err)
-  }
+  if (!err) console.log(data)
+  else console.log(err)
 })
 ```
 
@@ -49,12 +41,8 @@ btce.getInfo(function(err, data) {
 
 ```javascript
 btce.transHistory({ count: 10, order: 'DESC' }, function(err, data) {
-  if (!err) {
-    console.log(data)
-  }
-  else {
-    console.log(err)
-  }
+  if (!err) console.log(data)
+  else console.log(err)
 })
 ```
 
@@ -62,12 +50,8 @@ btce.transHistory({ count: 10, order: 'DESC' }, function(err, data) {
 
 ```javascript
 btce.query('OrderList', { count: 5 }, function(err, data) {
-  if (!err) {
-    console.log(data)
-  }
-  else {
-    console.log(err)
-  }
+  if (!err) console.log(data)
+  else console.log(err)
 })
 ```
 
@@ -75,30 +59,31 @@ btce.query('OrderList', { count: 5 }, function(err, data) {
 
 ```javascript
 // Trade API (requires api key and secret)
-getInfo = function(callback)
-transHistory = function(params, callback)
-tradeHistory = function(params, callback)
-orderList = function(params, callback)
-trade = function(params, callback)
-cancelOrder = function(orderId, callback)
-query = function(method, params, callback)
+getInfo(callback)
+transHistory(params, callback)
+tradeHistory(params, callback)
+orderList(params, callback)
+trade(params, callback)
+cancelOrder(orderId, callback)
+query(method, params, callback)
 
 // Public API
-fee = function(params, callback)
-trades = function(params, callback)
-depth = function(params, callback)
-ticker = function(params, callback)
+fee(params, callback)
+trades(params, callback)
+depth(params, callback)
+ticker(params, callback)
 
 // utils
-getTimestamp = function(time)
-getHTTPS = function(url, callback)
+getTimestamp(time)
+getHTTPS(url, callback)
 ```
 
 Information about parameters in source comments
 
 ## BTC-E API documentation
 
-https://btc-e.com/api/documentation
+  * Trade: https://btc-e.com/api/documentation
+  * Public: https://btc-e.com/page/2
 
 ## Feature requests
 

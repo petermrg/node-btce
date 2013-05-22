@@ -2,7 +2,7 @@
 
 Simple API to BTC-E Crypto Coin Trading platform
 
-Current version 0.4
+Current version 0.41
 
 ## Features
 
@@ -16,7 +16,7 @@ Current version 0.4
 
 ```javascript
 var BTCE = require('./btce.js')
-var btce = new BTCE.api('YOUR-KEY', 'YOUR-SECRET')
+var btce = new BTCE('YOUR-KEY', 'YOUR-SECRET')
 ```
 
 ### Get a ticker

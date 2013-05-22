@@ -2,7 +2,7 @@
  * Node.js BTC-E Trading API
  * https://btc-e.com/api/documentation
  *
- * Version: 0.4
+ * Version: 0.41
  * Author : petermrg <petermrg@ymail.com>
  * gitHub : https://github.com/petermrg/node-btce
  *
@@ -19,7 +19,9 @@ var crypto = require('crypto')
 var querystring = require('querystring')
 var util = require('util')
 
-var BTCE = function(key, secret) {
+module.exports = BTCE
+
+function BTCE(key, secret) {
   this.key = key
   this.secret = secret
   this.urlPost = 'https://btc-e.com:443/tapi'
@@ -343,5 +345,3 @@ BTCE.prototype.fee = function(params, callback) {
 
   this.getHTTPS(url, callback)
 }
-
-exports.api = BTCE

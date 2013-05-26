@@ -2,7 +2,7 @@
  * Node.js BTC-E Trading API
  * https://btc-e.com/api/documentation
  *
- * Version: 0.41
+ * Version: 0.4.1
  * Author : petermrg <petermrg@ymail.com>
  * gitHub : https://github.com/petermrg/node-btce
  *

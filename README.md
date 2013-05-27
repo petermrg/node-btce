@@ -2,7 +2,7 @@
 
 Simple API to BTC-E Crypto Coin Trading platform
 
-Current version 0.4.1
+Current version 0.4.2
 
 ## Features
 

@@ -1,0 +1,151 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'publish', '.' ]
+2 info using npm@1.2.21
+3 info using node@v0.10.7
+4 verbose node symlink /usr/bin/node
+5 verbose publish [ '.' ]
+6 verbose read json /home/peter/Dropbox/code/coins/btce/package.json
+7 verbose cache add [ '.', null ]
+8 verbose cache add name=undefined spec="." args=[".",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: '.',
+9 verbose parsed url   path: '.',
+9 verbose parsed url   href: '.' }
+10 silly lockFile 3a52ce78- .
+11 verbose lock . /home/peter/.npm/3a52ce78-.lock
+12 verbose read json package.json
+13 verbose tar pack [ '/home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/tmp.tgz',
+13 verbose tar pack   '.' ]
+14 verbose tarball /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/tmp.tgz
+15 verbose folder .
+16 info prepublish btce@0.4.1
+17 silly lockFile 3a52ce78- .
+18 verbose lock . /home/peter/.npm/3a52ce78-.lock
+19 silly lockFile 993b53c9-4884-0-10727105289697647-tmp-tgz /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/tmp.tgz
+20 verbose lock /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/tmp.tgz /home/peter/.npm/993b53c9-4884-0-10727105289697647-tmp-tgz.lock
+21 silly lockFile 3a52ce78- .
+22 silly lockFile 3a52ce78- .
+23 silly lockFile 993b53c9-4884-0-10727105289697647-tmp-tgz /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/tmp.tgz
+24 silly lockFile 993b53c9-4884-0-10727105289697647-tmp-tgz /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/tmp.tgz
+25 verbose tar unpack /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/tmp.tgz
+26 silly lockFile 12f59ae1-4884-0-10727105289697647-package /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/package
+27 verbose lock /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/package /home/peter/.npm/12f59ae1-4884-0-10727105289697647-package.lock
+28 silly lockFile 993b53c9-4884-0-10727105289697647-tmp-tgz /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/tmp.tgz
+29 verbose lock /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/tmp.tgz /home/peter/.npm/993b53c9-4884-0-10727105289697647-tmp-tgz.lock
+30 silly gunzTarPerm modes [ '755', '644' ]
+31 silly gunzTarPerm extractEntry package.json
+32 silly gunzTarPerm modified mode [ 'package.json', 436, 420 ]
+33 silly gunzTarPerm extractEntry .npmignore
+34 silly gunzTarPerm modified mode [ '.npmignore', 436, 420 ]
+35 silly gunzTarPerm extractEntry README.md
+36 silly gunzTarPerm modified mode [ 'README.md', 436, 420 ]
+37 silly gunzTarPerm extractEntry btce.js
+38 silly gunzTarPerm modified mode [ 'btce.js', 436, 420 ]
+39 silly gunzTarPerm extractEntry test.js
+40 silly gunzTarPerm modified mode [ 'test.js', 436, 420 ]
+41 silly gunzTarPerm extractEntry MIT-LICENSE.md
+42 silly gunzTarPerm modified mode [ 'MIT-LICENSE.md', 436, 420 ]
+43 verbose read json /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/package/package.json
+44 silly lockFile 12f59ae1-4884-0-10727105289697647-package /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/package
+45 silly lockFile 12f59ae1-4884-0-10727105289697647-package /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/package
+46 silly lockFile 993b53c9-4884-0-10727105289697647-tmp-tgz /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/tmp.tgz
+47 silly lockFile 993b53c9-4884-0-10727105289697647-tmp-tgz /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/tmp.tgz
+48 verbose from cache /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/package/package.json
+49 verbose tar pack [ '/home/peter/.npm/btce/0.4.1/package.tgz',
+49 verbose tar pack   '/home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/package' ]
+50 verbose tarball /home/peter/.npm/btce/0.4.1/package.tgz
+51 verbose folder /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/package
+52 silly lockFile 12f59ae1-4884-0-10727105289697647-package /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/package
+53 verbose lock /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/package /home/peter/.npm/12f59ae1-4884-0-10727105289697647-package.lock
+54 silly lockFile 28a51ff2-peter-npm-btce-0-4-1-package-tgz /home/peter/.npm/btce/0.4.1/package.tgz
+55 verbose lock /home/peter/.npm/btce/0.4.1/package.tgz /home/peter/.npm/28a51ff2-peter-npm-btce-0-4-1-package-tgz.lock
+56 silly lockFile 12f59ae1-4884-0-10727105289697647-package /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/package
+57 silly lockFile 12f59ae1-4884-0-10727105289697647-package /home/peter/tmp/npm-3062/1369661534884-0.10727105289697647/package
+58 silly lockFile 28a51ff2-peter-npm-btce-0-4-1-package-tgz /home/peter/.npm/btce/0.4.1/package.tgz
+59 silly lockFile 28a51ff2-peter-npm-btce-0-4-1-package-tgz /home/peter/.npm/btce/0.4.1/package.tgz
+60 silly lockFile 5a72e3a1-ome-peter-npm-btce-0-4-1-package /home/peter/.npm/btce/0.4.1/package
+61 verbose lock /home/peter/.npm/btce/0.4.1/package /home/peter/.npm/5a72e3a1-ome-peter-npm-btce-0-4-1-package.lock
+62 silly lockFile 5a72e3a1-ome-peter-npm-btce-0-4-1-package /home/peter/.npm/btce/0.4.1/package
+63 silly lockFile 5a72e3a1-ome-peter-npm-btce-0-4-1-package /home/peter/.npm/btce/0.4.1/package
+64 verbose tar unpack /home/peter/.npm/btce/0.4.1/package.tgz
+65 silly lockFile 5a72e3a1-ome-peter-npm-btce-0-4-1-package /home/peter/.npm/btce/0.4.1/package
+66 verbose lock /home/peter/.npm/btce/0.4.1/package /home/peter/.npm/5a72e3a1-ome-peter-npm-btce-0-4-1-package.lock
+67 silly lockFile 28a51ff2-peter-npm-btce-0-4-1-package-tgz /home/peter/.npm/btce/0.4.1/package.tgz
+68 verbose lock /home/peter/.npm/btce/0.4.1/package.tgz /home/peter/.npm/28a51ff2-peter-npm-btce-0-4-1-package-tgz.lock
+69 silly gunzTarPerm modes [ '755', '644' ]
+70 silly gunzTarPerm extractEntry package.json
+71 silly gunzTarPerm extractEntry .npmignore
+72 silly gunzTarPerm extractEntry README.md
+73 silly gunzTarPerm extractEntry btce.js
+74 silly gunzTarPerm extractEntry test.js
+75 silly gunzTarPerm extractEntry MIT-LICENSE.md
+76 verbose read json /home/peter/.npm/btce/0.4.1/package/package.json
+77 silly lockFile 5a72e3a1-ome-peter-npm-btce-0-4-1-package /home/peter/.npm/btce/0.4.1/package
+78 silly lockFile 5a72e3a1-ome-peter-npm-btce-0-4-1-package /home/peter/.npm/btce/0.4.1/package
+79 silly lockFile 28a51ff2-peter-npm-btce-0-4-1-package-tgz /home/peter/.npm/btce/0.4.1/package.tgz
+80 silly lockFile 28a51ff2-peter-npm-btce-0-4-1-package-tgz /home/peter/.npm/btce/0.4.1/package.tgz
+81 verbose from cache /home/peter/.npm/btce/0.4.1/package/package.json
+82 verbose chmod /home/peter/.npm/btce/0.4.1/package.tgz 644
+83 verbose chown /home/peter/.npm/btce/0.4.1/package.tgz [ 1000, 1000 ]
+84 silly lockFile 3a52ce78- .
+85 silly publish { name: 'btce',
+85 silly publish   version: '0.4.1',
+85 silly publish   description: 'BTC-E Trading API',
+85 silly publish   main: 'btce.js',
+85 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+85 silly publish   repository:
+85 silly publish    { type: 'git',
+85 silly publish      url: 'https://github.com/petermrg/node-btce.git' },
+85 silly publish   keywords:
+85 silly publish    [ 'btc-e',
+85 silly publish      'btce',
+85 silly publish      'bitcoin',
+85 silly publish      'btc',
+85 silly publish      'trading',
+85 silly publish      'api',
+85 silly publish      'litecoin',
+85 silly publish      'ltc' ],
+85 silly publish   author: { name: 'Peter Morgan' },
+85 silly publish   license: 'MIT',
+85 silly publish   readmeFilename: 'README.md',
+85 silly publish   gitHead: '2497dc25839ccf43c69ff0f707b3e0faf3f38885',
+85 silly publish   bugs: { url: 'https://github.com/petermrg/node-btce/issues' },
+85 silly publish   readme: '# BTC-E API for Node.js\n\nSimple API to BTC-E Crypto Coin Trading platform\n\nCurrent version 0.4.1\n\n## Features\n\n  * Full API (Public and Trade)\n  * Asynchronous requests\n  * Automatically converts Date objects, strings and JS timestamps to UNIX timestamps\n\n## Usage samples\n\n### Install\n\n```\nnpm install btce\n```\n\n### Init\n\n```javascript\nvar BTCE = require(\'btce\')\nvar btce = new BTCE(\'YOUR-KEY\', \'YOUR-SECRET\')\n```\n\n### Get a ticker\n\n```javascript\nbtce.ticker({ pair: \'btc_usd\' }, function(err, data) {\n  if (!err) console.log(data)\n  else console.log(err)\n})\n```\n\n### Display user information (funds, transaction count, open orders count...)\n\n```javascript\nbtce.getInfo(function(err, data) {\n  if (!err) console.log(data)\n  else console.log(err)\n})\n```\n\n### Get last 10 transactions in descending order\n\n```javascript\nbtce.transHistory({ count: 10, order: \'DESC\' }, function(err, data) {\n  if (!err) console.log(data)\n  else console.log(err)\n})\n```\n\n### Buy 2 bitcoins for 100$ each\n\n```javascript\nbtce.trade({\'pair\': \'btc_usd\', \'type\': \'buy\', \'rate\': 100.0, \'amount\': 2.0}, function(err, data) {\n  if (!err) console.log(data);\n  else console.log(err);\n});\n```\n\n## Methods\n\n```javascript\n// Trade API (requires api key and secret)\ngetInfo(callback)\ntransHistory(params, callback)\ntradeHistory(params, callback)\norderList(params, callback)\ntrade(params, callback)\ncancelOrder(orderId, callback)\nquery(method, params, callback)\n\n// Public API\nfee(params, callback)\ntrades(params, callback)\ndepth(params, callback)\nticker(params, callback)\n\n// utils\ngetTimestamp(time)\ngetHTTPS(url, callback)\n```\n\nInformation about parameters in source comments\n\n## BTC-E API documentation\n\n  * Trade: https://btc-e.com/api/documentation\n  * Public: https://btc-e.com/page/2\n\n## Feature requests\n\n  * petermrg at ymail dot com\n\n## Donate\n\n  * BTC: 1GVRSmJzZpFoLvFnPNtdwPeVXh6t4t65PZ\n  * LTC: LWSRwTDKVxE9BGziUzbUw7MkHz6KACVnAA\n\n',
+85 silly publish   _id: 'btce@0.4.1',
+85 silly publish   dist: { shasum: 'a708cd4219550c3bb0d2446f99f65fa912a8123d' },
+85 silly publish   _from: '.' }
+86 verbose url raw btce
+87 verbose url resolving [ 'https://registry.npmjs.org/', './btce' ]
+88 verbose url resolved https://registry.npmjs.org/btce
+89 info trying registry request attempt 1 at 15:33:15
+90 http PUT https://registry.npmjs.org/btce
+91 http 409 https://registry.npmjs.org/btce
+92 verbose url raw btce
+93 verbose url resolving [ 'https://registry.npmjs.org/', './btce' ]
+94 verbose url resolved https://registry.npmjs.org/btce
+95 info trying registry request attempt 1 at 15:33:17
+96 http GET https://registry.npmjs.org/btce
+97 http 200 https://registry.npmjs.org/btce
+98 error publish fail Cannot publish over existing version.
+98 error publish fail Update the 'version' field in package.json and try again.
+98 error publish fail
+98 error publish fail If the previous version was published in error, see:
+98 error publish fail     npm help unpublish
+98 error publish fail
+98 error publish fail To automatically increment version numbers, see:
+98 error publish fail     npm help version
+99 error System Linux 3.8.0-22-generic
+100 error command "/usr/bin/node" "/usr/bin/npm" "publish" "."
+101 error cwd /home/peter/Dropbox/code/coins/btce
+102 error node -v v0.10.7
+103 error npm -v 1.2.21
+104 error code EPUBLISHCONFLICT
+105 verbose exit [ 1, true ]

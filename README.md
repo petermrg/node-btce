@@ -52,13 +52,13 @@ btce.transHistory({ count: 10, order: 'DESC' }, function(err, data) {
 })
 ```
 
-### Custom queries
+### Buy 2 bitcoins for 100$ each
 
 ```javascript
-btce.query('OrderList', { count: 5 }, function(err, data) {
-  if (!err) console.log(data)
-  else console.log(err)
-})
+btce.trade({'pair': 'btc_usd', 'type': 'buy', 'rate': 100.0, 'amount': 2.0}, function(err, data) {
+  if (!err) console.log(data);
+  else console.log(err);
+});
 ```
 
 ## Methods

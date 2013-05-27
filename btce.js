@@ -65,10 +65,10 @@ BTCE.prototype.getInfo = function(callback) {
  * from      | No    | the number of the order to start displaying with | numerical | 0
  * count     | No    | The number of orders for displaying              | numerical | 1000
  * from_id   | No    | id of the order to start displaying with         | numerical | 0
- * end_id    | No    | id of the order to finish displaying             | numerical | ∞
+ * end_id    | No    | id of the order to finish displaying             | numerical | Infinity
  * order     | No    | sorting                                          | order[1]  | DESC
  * since     | No    | when to start displaying                         | time[2]   | 0
- * end       | No    | when to finish displaying                        | time[2]   | ∞
+ * end       | No    | when to finish displaying                        | time[2]   | Infinity
  * ----------+-------+--------------------------------------------------+-----------+-----------
  * [1] ASC or DESC
  * [2] Accepts UNIX timestamps, Date objects and strings like '2013-01-02 20:23'
@@ -88,10 +88,10 @@ BTCE.prototype.transHistory = function(params, callback) {
  * from      | No    | the number of the order to start displaying with | numerical | 0
  * count     | No    | The number of orders for displaying              | numerical | 1000
  * from_id   | No    | id of the order to start displaying with         | numerical | 0
- * end_id    | No    | id of the order to finish displaying             | numerical | ∞
+ * end_id    | No    | id of the order to finish displaying             | numerical | Infinity
  * order     | No    | sorting                                          | order[1]  | DESC
  * since     | No    | when to start displaying                         | time[2]   | 0
- * end       | No    | when to finish displaying                        | time[2]   | ∞
+ * end       | No    | when to finish displaying                        | time[2]   | Infinity
  * pair      | No    | the pair to display the orders                   | pair[3]   | all pairs
  * ----------+-------+--------------------------------------------------+-----------+-----------
  * [1] ASC or DESC
@@ -112,10 +112,10 @@ BTCE.prototype.tradeHistory = function(params, callback) {
  * from      | No    | the number of the order to start displaying with | numerical | 0
  * count     | No    | The number of orders for displaying              | numerical | 1000
  * from_id   | No    | id of the order to start displaying with         | numerical | 0
- * end_id    | No    | id of the order to finish displaying             | numerical | ∞
+ * end_id    | No    | id of the order to finish displaying             | numerical | Infinity
  * order     | No    | sorting                                          | order[1]  | DESC
  * since     | No    | when to start displaying                         | time[2]   | 0
- * end       | No    | when to finish displaying                        | time[2]   | ∞
+ * end       | No    | when to finish displaying                        | time[2]   | Infinity
  * pair      | No    | the pair to display the orders                   | pair[3]   | all pairs
  * active    | No    | is it displaying of active orders only?          | 1 or 0    | 1
  * ----------+-------+--------------------------------------------------+-----------+-----------
@@ -131,7 +131,7 @@ BTCE.prototype.orderList = function(params, callback) {
 }
 
 /**
- * trade: Cancellation of the order
+ * trade: Trading is done according to this method
  * ----------+-------+--------------------------------------------------+-----------+-----------
  * parameter | oblig | description                                      | type      | default
  * ----------+-------+--------------------------------------------------+-----------+-----------

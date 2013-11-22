@@ -69,6 +69,7 @@ getInfo(callback)
 transHistory(params, callback)
 tradeHistory(params, callback)
 orderList(params, callback)
+activeOrders(params, callback)
 trade(params, callback)
 cancelOrder(orderId, callback)
 query(method, params, callback)
@@ -99,4 +100,4 @@ Information about parameters in source comments
 
   * BTC: 1GVRSmJzZpFoLvFnPNtdwPeVXh6t4t65PZ
   * LTC: LWSRwTDKVxE9BGziUzbUw7MkHz6KACVnAA
-
+  * XPM: Aett4LKYVkaHXzp3EJAUiMzk29No9a9ZUu

@@ -98,7 +98,7 @@ BTCE.prototype.transHistory = function(params, callback) {
  * [2] Accepts UNIX timestamps, Date objects and strings like '2013-01-02 20:23'
  *
  * @param {Object} params
- * @param {Function} callback(err, data)
+ * @param {Function} callback(err, data) 
  */
 BTCE.prototype.tradeHistory = function(params, callback) {
   this.query('TradeHistory', params, callback)

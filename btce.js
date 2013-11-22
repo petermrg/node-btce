@@ -101,7 +101,7 @@ BTCE.prototype.transHistory = function(params, callback) {
  * @param {Function} callback(err, data)
  */
 BTCE.prototype.tradeHistory = function(params, callback) {
-  this.query('TransHistory', params, callback)
+  this.query('TradeHistory', params, callback)
 }
 
 /**

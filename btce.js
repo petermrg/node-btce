@@ -101,7 +101,7 @@ BTCE.prototype.transHistory = function(params, callback) {
  * @param {Function} callback(err, data)
  */
 BTCE.prototype.tradeHistory = function(params, callback) {
-  this.query('TransHistory', params, callback)
+  this.query('TradeHistory', params, callback)
 }
 
 /**
@@ -130,6 +130,33 @@ BTCE.prototype.orderList = function(params, callback) {
   this.query('OrderList', params, callback)
 }
 
+
+
+/**
+ * ActiveOrders: returns your open orders/the orders history.
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * parameter | oblig | description                                      | type      | default
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * from      | No    | the number of the order to start displaying with | numerical | 0
+ * count     | No    | The number of orders for displaying              | numerical | 1000
+ * from_id   | No    | id of the order to start displaying with         | numerical | 0
+ * end_id    | No    | id of the order to finish displaying             | numerical | Infinity
+ * order     | No    | sorting                                          | order[1]  | DESC
+ * since     | No    | when to start displaying                         | time[2]   | 0
+ * end       | No    | when to finish displaying                        | time[2]   | Infinity
+ * pair      | No    | the pair to display the orders                   | pair[3]   | all pairs
+ * active    | No    | is it displaying of active orders only?          | 1 or 0    | 1
+ * ----------+-------+--------------------------------------------------+-----------+-----------
+ * [1] ASC or DESC
+ * [2] Accepts UNIX timestamps, Date objects and strings like '2013-01-02 20:23'
+ * [3] Example: btc_usd
+ *
+ * @param {Object} params
+ * @param {Function} callback(err, data)
+ */
+BTCE.prototype.activeOrders = function(params, callback) {
+    this.query('ActiveOrders', params, callback)
+}
 /**
  * trade: Trading is done according to this method
  * ----------+-------+--------------------------------------------------+-----------+-----------

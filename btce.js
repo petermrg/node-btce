@@ -270,7 +270,16 @@ BTCE.prototype.getHTTPS = function(getUrl, callback) {
       data+= chunk
     })
     res.on('end', function() {
-      callback(false, JSON.parse(data))
+      try {
+        data = JSON.parse(data)
+        if (data.error) {
+          callback({error: data.error}, data)
+        } else {
+          callback(false, data)
+        }
+      } catch(e) {
+        callback({error: 'Error parsing JSON response'}, data)
+      }
     })
   })
 

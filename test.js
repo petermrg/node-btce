@@ -3,7 +3,7 @@ var BTCE = require('./btce.js')
 var btce = new BTCE('YOUR-KEY', 'YOUR-SECRET')
 
 btce.getInfo(function(err, data) {
-  console.log('\nGet Info: ')	
+  console.log('\nGet Info: ')
   if (!err) console.log(data)
   else console.log(err)
 })

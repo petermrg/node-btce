@@ -1,6 +1,6 @@
 {
   "name": "btce",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "BTC-E Trading API",
   "main": "btce.js",
   "scripts": {

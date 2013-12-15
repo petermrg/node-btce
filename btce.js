@@ -26,25 +26,7 @@ function BTCE(key, secret) {
   this.secret = secret
   this.urlPost = 'https://btc-e.com:443/tapi'
   this.urlGet = 'https://btc-e.com:443/api/2/'
-  this.nonce = this.getTimestamp(Date.now())
-}
-
-/**
- * getTimestamp: converts a Date object, a string, or a JS timestamp to a UNIX timestamp.
- *
- * @param {Mixed} time
- */
-BTCE.prototype.getTimestamp = function(time) {
-  if (util.isDate(time)) {
-    return Math.round(time.getTime() / 1000)
-  }
-  if (typeof time == 'string') {
-    return this.getTimestamp(new Date(time))
-  }
-  if (typeof time == 'number') {
-    return (time >= 0x100000000) ? Math.round(time / 1000) : time
-  }
-  return 0
+  this.nonce = BTCE.getTimestamp(Date.now())
 }
 
 /**
@@ -130,8 +112,6 @@ BTCE.prototype.orderList = function(params, callback) {
   this.query('OrderList', params, callback)
 }
 
-
-
 /**
  * ActiveOrders: returns your open orders/the orders history.
  * ----------+-------+--------------------------------------------------+-----------+-----------
@@ -157,6 +137,7 @@ BTCE.prototype.orderList = function(params, callback) {
 BTCE.prototype.activeOrders = function(params, callback) {
     this.query('ActiveOrders', params, callback)
 }
+
 /**
  * trade: Trading is done according to this method
  * ----------+-------+--------------------------------------------------+-----------+-----------
@@ -200,7 +181,6 @@ BTCE.prototype.cancelOrder = function(orderId, callback) {
  * @param {Function} callback(err, data)
  */
 BTCE.prototype.query = function(method, params, callback) {
-  var _this = this
   var content = {
     'method': method,
     'nonce': ++this.nonce,
@@ -209,7 +189,7 @@ BTCE.prototype.query = function(method, params, callback) {
   if (!!params && typeof(params) == 'object') {
     Object.keys(params).forEach(function (key) {
       if (key == 'since' || key == 'end') {
-        value = _this.getTimestamp(params[key])
+        value = BTCE.getTimestamp(params[key])
       }
       else {
         value = params[key]
@@ -241,12 +221,12 @@ BTCE.prototype.query = function(method, params, callback) {
       data+= chunk
     })
     res.on('end', function() {
-      callback(false, JSON.parse(data))
+      BTCE.responseHandler(null, data, callback)
     })
   })
 
   req.on('error', function(err) {
-    callback(err, null)
+    BTCE.responseHandler(err, null, callback)
   })
 
   req.write(content)
@@ -265,26 +245,20 @@ BTCE.prototype.getHTTPS = function(getUrl, callback) {
   options.method = 'GET'
   var req = https.request(options, function(res) {
     var data = ''
+    var err = false;
     res.setEncoding('utf8')
+
     res.on('data', function (chunk) {
       data+= chunk
     })
+
     res.on('end', function() {
-      try {
-        data = JSON.parse(data)
-        if (data.error) {
-          callback({error: data.error}, data)
-        } else {
-          callback(false, data)
-        }
-      } catch(e) {
-        callback({error: 'Error parsing JSON response'}, data)
-      }
+      BTCE.responseHandler(null, data, callback)
     })
   })
 
   req.on('error', function(err) {
-    callback(err, null)
+    BTCE.responseHandler(err, null, callback)
   })
 
   req.end()
@@ -380,4 +354,47 @@ BTCE.prototype.fee = function(params, callback) {
   var url = this.urlGet+params.pair+'/fee'
 
   this.getHTTPS(url, callback)
+}
+
+/**
+ * Helper function to handle BTCE HTTP responses and errors
+ */
+BTCE.responseHandler = function(err, data, callback) {
+  if (err) {
+    callback(err, null)
+  } else {
+    var result = null
+    var errorMessage = null
+    try {
+      result = JSON.parse(data)
+      if (result.error || result.success == 0) {
+        errorMessage = result.error || 'Unknown error'
+      }
+    } catch (e) {
+      errorMessage = 'Error parsing JSON'
+    }
+    if (errorMessage) {
+      callback(new Error(errorMessage), result)
+    } else {
+      callback(null, result)
+    }
+  }
+}
+
+/**
+ * getTimestamp: converts a Date object, a string, or a JS timestamp to a UNIX timestamp.
+ *
+ * @param {Mixed} time
+ */
+BTCE.getTimestamp = function(time) {
+  if (util.isDate(time)) {
+    return Math.round(time.getTime() / 1000)
+  }
+  if (typeof time == 'string') {
+    return BTCE.getTimestamp(new Date(time))
+  }
+  if (typeof time == 'number') {
+    return (time >= 0x100000000) ? Math.round(time / 1000) : time
+  }
+  return 0
 }

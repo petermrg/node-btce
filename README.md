@@ -89,13 +89,3 @@ Information about parameters in source comments
 
   * Trade: https://btc-e.com/api/documentation
   * Public: https://btc-e.com/page/2
-
-## Feature requests
-
-  * petermrg at ymail dot com
-
-## Donate
-
-  * BTC: 1GVRSmJzZpFoLvFnPNtdwPeVXh6t4t65PZ
-  * LTC: LWSRwTDKVxE9BGziUzbUw7MkHz6KACVnAA
-  * XPM: Aett4LKYVkaHXzp3EJAUiMzk29No9a9ZUu
